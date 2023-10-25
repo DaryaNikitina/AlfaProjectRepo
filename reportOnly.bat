@@ -1,0 +1,1 @@
+call development\serveAllure.bat
