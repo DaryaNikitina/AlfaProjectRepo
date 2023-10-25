@@ -19,7 +19,7 @@ public class LoginFieldValidationTests extends BaseTest {
     public void tryToLoginWithEmptyDataTest() {
         LoginPage loginScreen = new LoginPage();
         loginScreen.clickLoginButton();
-        assertEquals(loginScreen.getErrorMessage(), Messages.NOT_VALID_DATA);
+        assertEquals(Messages.NOT_VALID_DATA, loginScreen.getErrorMessage());
     }
 
     @Test
@@ -31,8 +31,8 @@ public class LoginFieldValidationTests extends BaseTest {
                 .enterPassword(TestData.VALID_PASSWORD)
                 .clickLoginButton();
         assertAll(
-                () -> assertEquals(loginScreen.getEnteredLogin().length(), 50),
-                () -> assertEquals(loginScreen.getErrorMessage(), Messages.NOT_VALID_DATA)
+                () -> assertEquals(50, loginScreen.getEnteredLogin().length()),
+                () -> assertEquals(Messages.NOT_VALID_DATA, loginScreen.getErrorMessage())
         );
     }
 
@@ -44,6 +44,6 @@ public class LoginFieldValidationTests extends BaseTest {
         loginScreen.enterUsername(TestData.FORBIDDEN_INPUT)
                 .enterPassword(TestData.VALID_PASSWORD)
                 .clickLoginButton();
-        assertEquals(loginScreen.getErrorMessage(), Messages.NOT_VALID_DATA);
+        assertEquals(Messages.NOT_VALID_DATA, loginScreen.getErrorMessage());
     }
 }
